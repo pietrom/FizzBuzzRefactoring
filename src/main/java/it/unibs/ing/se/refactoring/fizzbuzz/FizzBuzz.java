@@ -15,7 +15,7 @@ public class FizzBuzz {
 	}
 	
 	public static String play(int input) {
-		String result = cases.entrySet().stream().reduce(Empty, (acc, curr) -> isMultipleOf(input, curr.getKey()) ? acc + curr.getValue() : acc, (x, y) -> x + y);		
+		String result = cases.entrySet().stream().reduce(Empty, (acc, curr) -> isMultipleOf(input, curr.getKey()) ? combine(acc, curr.getValue()) : acc, FizzBuzz::combine);		
 		if (hasNoValue(result)) {
 			result = Integer.toString(input);
 		}
@@ -28,5 +28,9 @@ public class FizzBuzz {
 
 	private static boolean isMultipleOf(int input, int divider) {
 		return input % divider == 0;
+	}
+	
+	private static String combine(String x, String y) {
+		return x + y;
 	}
 }
