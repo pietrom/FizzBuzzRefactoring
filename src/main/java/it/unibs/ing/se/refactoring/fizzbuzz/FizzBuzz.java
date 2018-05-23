@@ -1,16 +1,20 @@
 package it.unibs.ing.se.refactoring.fizzbuzz;
 
+import java.util.Map;
+import java.util.TreeMap;
+
 public class FizzBuzz {
 	private static final String Empty = "";
 	
+	private static final Map<Integer, String> cases = new TreeMap<Integer, String>();
+	
+	static {
+		cases.put(3, "fizz");
+		cases.put(5, "buzz");
+	}
+	
 	public static String play(int input) {
-		String result = Empty;
-		if (isMultipleOf(input, 3)) {
-			result += "fizz";
-		}
-		if (isMultipleOf(input, 5)) {
-			result += "buzz";
-		}
+		String result = cases.entrySet().stream().reduce(Empty, (acc, curr) -> isMultipleOf(input, curr.getKey()) ? acc + curr.getValue() : acc, (x, y) -> x + y);		
 		if (hasNoValue(result)) {
 			result = Integer.toString(input);
 		}
