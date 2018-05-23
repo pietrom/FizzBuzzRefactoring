@@ -11,6 +11,7 @@ public class FizzBuzz {
 	static {
 		cases.put(3, "fizz");
 		cases.put(5, "buzz");
+		cases.put(7, "bang");
 	}
 	
 	public static String play(int input) {
