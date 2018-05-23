@@ -2,15 +2,19 @@ package it.unibs.ing.se.refactoring.fizzbuzz;
 
 public class FizzBuzz {
 	public static String play(int input) {
-		if(input % 15 == 0) {
+		if(isMultipleOf(input, 15)) {
 			return "fizzbuzz";
 		}
-		if(input % 3 == 0) {
+		if(isMultipleOf(input, 3)) {
 			return "fizz";
 		}
-		if(input % 5 == 0) {
+		if(isMultipleOf(input, 5)) {
 			return "buzz";
 		}
 		return Integer.toString(input);
+	}
+
+	private static boolean isMultipleOf(int input, int divider) {
+		return input % divider == 0;
 	}
 }
